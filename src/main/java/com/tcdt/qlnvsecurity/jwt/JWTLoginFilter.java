@@ -63,19 +63,22 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
 		BaseResponse resp = new BaseResponse();
 		if (checkLogin) {
-			TokenAuthenticationService.addAuthentication(response, authResult.getName(), customUserDetails.getDvql());
+			List<String> roles = customUserDetails.getAuthorities().stream().map(item -> item.getAuthority())
+					.collect(Collectors.toList());
+			
+			TokenAuthenticationService.addAuthentication(response, authResult.getName(), customUserDetails.getDvql(),roles);
 
 			String authorizationString = response.getHeader(TokenAuthenticationService.HEADER_STRING);
 
 			System.out.println("Authorization String=" + authorizationString);
 
-			List<String> roles = customUserDetails.getAuthorities().stream().map(item -> item.getAuthority())
-					.collect(Collectors.toList());
+			
+			
 			JwtResponse jwtResponse = new JwtResponse();
 			jwtResponse.setId(customUserDetails.user.getId());
 			jwtResponse.setUsername(customUserDetails.getUsername());
 			jwtResponse.setToken(authorizationString);
-			jwtResponse.setRoles(roles);
+			//jwtResponse.setRoles(roles);
 			resp.setData(jwtResponse);
 			resp.setStatusCode(Contains.RESP_SUCC);
 		} else {

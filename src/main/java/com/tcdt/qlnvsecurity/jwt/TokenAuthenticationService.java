@@ -1,6 +1,7 @@
 package com.tcdt.qlnvsecurity.jwt;
 
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,9 +32,12 @@ public class TokenAuthenticationService {
 
 	static final String HEADER_STRING = "Authorization";
 
-	public static void addAuthentication(HttpServletResponse res, String username, Long issuer) {
-
+	public static void addAuthentication(HttpServletResponse res, String username, Long issuer,List<String> roles) {
+		
+		Claims claims = Jwts.claims().setSubject(username);
+        claims.put("roles", roles);
 		String JWT = Jwts.builder().setSubject(username).setIssuer(Long.toString(issuer))
+				.setClaims(claims)
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
 				.signWith(SignatureAlgorithm.HS512, SECRET).compact();
 		res.addHeader(HEADER_STRING, JWT);
