@@ -62,7 +62,7 @@ public class AuthenticationAPI {
 			if (bCryptPasswordEncoder.matches(decodeValue(objReq.getPassword()), user.getPassword()))
 				throw new Exception("Tên tài khoản hoặc mật khẩu không chính xác");
 
-			String JWT = Jwts.builder().setSubject(objReq.getUsername()).setIssuer(Long.toString(user.getDvql()))
+			String JWT = Jwts.builder().setSubject(objReq.getUsername()).setIssuer(user.getDvql())
 					.claim("role", "[{a:'b'}]").setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
 					.signWith(SignatureAlgorithm.HS512, SECRET).compact();
 
