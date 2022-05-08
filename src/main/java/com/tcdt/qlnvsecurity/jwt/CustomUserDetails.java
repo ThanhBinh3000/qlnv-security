@@ -75,5 +75,20 @@ public class CustomUserDetails implements UserDetails {
 	public String getDvql() {
 		return user.getDvql();
 	}
+	public String getMaQd() {
+		return user.getMaQd();
+	}
+	public String getMaTr() {
+		return user.getMaTr();
+	}
+	public String getMaKhqlh() {
+		return user.getMaKhqlh();
+	}
+	public String getMaKtbq() {
+		return user.getMaKtbq();
+	}
+	public String getMaTckt() {
+		return user.getMaTckt();
+	}
 
 }

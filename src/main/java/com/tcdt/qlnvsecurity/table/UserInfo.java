@@ -42,6 +42,11 @@ public class UserInfo {
 	String department;
 	long notifyViewId;
 	String groupsArr;
+	String maQd;
+	String maTr;
+	String maKhqlh;
+	String maKtbq;
+	String maTckt;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })
