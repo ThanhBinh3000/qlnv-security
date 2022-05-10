@@ -40,6 +40,7 @@ public class TokenAuthenticationService {
 		claims.put("MA_KHQLH", maKhqlh);
 		claims.put("MA_KTBQ", maKtbq);
 		claims.put("MA_TCKT", maTckt);
+		claims.put("MA_DVI", issuer);
         claims.put("roles", roles);
 		String JWT = Jwts.builder().setSubject(username).setIssuer(issuer)
 				.setClaims(claims)
