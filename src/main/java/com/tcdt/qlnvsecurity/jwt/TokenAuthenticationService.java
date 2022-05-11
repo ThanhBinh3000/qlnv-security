@@ -32,7 +32,7 @@ public class TokenAuthenticationService {
 
 	static final String HEADER_STRING = "Authorization";
 
-	public static void addAuthentication(HttpServletResponse res, String username, String issuer, String maQd,String maTr,String maKhqlh,String maKtbq,String maTckt,List<String> roles) {
+	public static void addAuthentication(HttpServletResponse res, String username,String cap, String issuer, String maQd,String maTr,String maKhqlh,String maKtbq,String maTckt,List<String> roles) {
 		
 		Claims claims = Jwts.claims().setSubject(username);
 		claims.put("MA_QD", maQd);
@@ -41,6 +41,7 @@ public class TokenAuthenticationService {
 		claims.put("MA_KTBQ", maKtbq);
 		claims.put("MA_TCKT", maTckt);
 		claims.put("MA_DVI", issuer);
+		claims.put("CAP_DVI", cap);
         claims.put("roles", roles);
 		String JWT = Jwts.builder().setSubject(username).setIssuer(issuer)
 				.setClaims(claims)

@@ -75,6 +75,9 @@ public class CustomUserDetails implements UserDetails {
 	public String getDvql() {
 		return user.getDvql();
 	}
+	public String getCapDvi() {
+		return user.getCapDvi();
+	}
 	public String getMaQd() {
 		return user.getMaQd();
 	}
