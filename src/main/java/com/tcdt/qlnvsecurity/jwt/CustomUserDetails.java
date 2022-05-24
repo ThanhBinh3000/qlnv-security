@@ -93,5 +93,7 @@ public class CustomUserDetails implements UserDetails {
 	public String getMaTckt() {
 		return user.getMaTckt();
 	}
-
+	public String getTenDvi() {
+		return user.getTenDvi();
+	}
 }

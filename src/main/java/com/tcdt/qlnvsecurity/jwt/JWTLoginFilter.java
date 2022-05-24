@@ -67,7 +67,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 					.collect(Collectors.toList());
 			
 			TokenAuthenticationService.addAuthentication(response, authResult.getName(),customUserDetails.getCapDvi(), customUserDetails.getDvql(), customUserDetails.getMaQd(),
-					customUserDetails.getMaTr(),customUserDetails.getMaKhqlh(),customUserDetails.getMaKtbq(),customUserDetails.getMaTckt(),roles);
+					customUserDetails.getMaTr(),customUserDetails.getMaKhqlh(),customUserDetails.getMaKtbq(),customUserDetails.getMaTckt(),roles, customUserDetails.getTenDvi());
 
 			String authorizationString = response.getHeader(TokenAuthenticationService.HEADER_STRING);
 
